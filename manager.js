@@ -29,7 +29,7 @@ class TicketManager {
             id: ++ qProducts,
         }   
 
-        this.products.push(product);
+        this.products.push(evento);
     }
 
     getProducts = () => {
@@ -45,22 +45,29 @@ class TicketManager {
         }
     }
 
-    addUser = (idProduct) => {
-        
-        const product = this.getProduct(idProduct);
+  addUser = (idProduct) => {
 
-        if(product === 'not found'){
-            return 'El evento no existe'
-        }
+    const product = this.getProduct(idProduct);
 
-        const registro = product.users.find(idPersona => idPersona == idUser);
-       
-        if(registro){
-            return '${idUser} ya compraste este producto';
-        }
-        product.users.push(idUser);
-        return product;
+    if(product === 'not found'){
+
+      return 'El evento no existe'
+
     }
+
+    const registro = product.users.find(idPersona => idPersona == idUser);
+
+    if(registro){
+
+      return '${idUser} ya compraste este producto';
+
+    }
+
+    product.users.push(idUser);
+
+    return product;
+
+  }
 }
 
 const ticketManager = new TicketManager();
